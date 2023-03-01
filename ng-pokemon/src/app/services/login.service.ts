@@ -1,11 +1,12 @@
 import { HttpClient, HttpHeaders } from '@angular/common/http';
 import { Injectable } from '@angular/core';
 import { map, Observable, of, switchMap } from 'rxjs';
-import { environment } from 'src/environments/environment';
+import { environment } from 'src/environments/environment.prod'; // TODO: why??????????????????????
 import { User } from '../models/user.model';
 
-// Import from environment file. De-structures the 'apiUrl' value from it.
-const { apiUrl: apiUrl, apiKey } = environment;
+
+// Import from environment file. De-structures the 'apiUsers' value from it.
+const { apiUsers, apiKey } = environment;
 
 @Injectable({
   providedIn: 'root'
@@ -36,7 +37,7 @@ export class LoginService {
 
   // Check if user exists
   private checkUsername(username: string): Observable<User | undefined> { // We need to convert from array to either User or undefined (if user doesn't exist).
-    return this.http.get<User[]>(`${apiUrl}?username=${username}`) // Always gets an array
+    return this.http.get<User[]>(`${apiUsers}?username=${username}`) // Always gets an array
       .pipe(
         // RxJS operators
         map((response: User[]) => response.pop()) // Return the last item in the array (should be the only item if IDs are unique) into the map. Undefined if the array is empty.
@@ -57,7 +58,7 @@ export class LoginService {
     });
 
     // POST request to create items on the server.
-    return this.http.post<User>(apiUrl, user, { headers }) // URL, user object, (headers) configuration.
+    return this.http.post<User>(apiUsers, user, { headers }) // URL, user object, (headers) configuration.
   }
 
   // Whether a user already exists OR one was just created (above), store the user.
