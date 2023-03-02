@@ -1,7 +1,8 @@
 import { HttpClient, HttpErrorResponse } from '@angular/common/http';
 import { Injectable } from '@angular/core';
-import { finalize } from 'rxjs';
+import { finalize, map } from 'rxjs';
 import { environment } from 'src/environments/environment.prod'; // TODO: .prod???
+import { PokemonResponse } from '../models/pokemon-response.model';
 import { Pokemon } from '../models/pokemon.model';
 
 const { apiPokemon } = environment;
@@ -29,17 +30,18 @@ export class PokemonCatalogueService {
 
   constructor(private readonly http: HttpClient) { }
 
+  // TODO: make sure PokemonResponse is the correct implementation!!!!
   public findAllPokemon(): void {
     this._loading = true;
-    this.http.get<Pokemon[]>(apiPokemon)
+    this.http.get<PokemonResponse>(apiPokemon)
       .pipe(
         finalize(() => {
           this._loading = false;
         })
       )
       .subscribe({
-        next: (pokemon: Pokemon[]) => {
-          this._pokemon = pokemon; // TODO IMPORTANT!!!!!!!!!!!!!: get "results"
+        next: (pokemon: PokemonResponse) => {
+          this._pokemon = pokemon.results; // TODO IMPORTANT!!!!!!!!!!!!!: get "results"
         },
         error: (error: HttpErrorResponse) => {
           this._error = error.message;
