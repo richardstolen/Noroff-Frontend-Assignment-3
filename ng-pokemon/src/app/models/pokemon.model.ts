@@ -1,4 +1,4 @@
 export interface Pokemon {
     name: string;
-    imgUrl: string
+    url: string // TODO: how should this be implemented?
 }

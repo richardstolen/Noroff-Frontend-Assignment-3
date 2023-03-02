@@ -1,1 +1,4 @@
-<p>pokemon-catalogue works!</p>
+<main class="container mx-auto p-4">
+    <p *ngIf="loading">Loading pokemon...</p>
+    <app-pokemon-list [pokemon]="pokemon"></app-pokemon-list>
+</main>
