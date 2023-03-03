@@ -8,10 +8,10 @@ import { UserService } from 'src/app/services/user.service';
   styleUrls: ['./collect-button.component.css'],
 })
 export class CollectButtonComponent {
-  @Input() pokemonName: string = ''; // TODO: id or name?
-  @Input() pokemonUrl: string = ''; // TODO: id or name?
-  @Input() trainerPage?: boolean; // TODO: id or name?
-  @Input() index: number = -1; // TODO: id or name?
+  @Input() pokemonName: string = '';
+  @Input() pokemonUrl: string = '';
+  @Input() trainerPage?: boolean;
+  @Input() index: number = -1;
 
   private _user?: User;
 
