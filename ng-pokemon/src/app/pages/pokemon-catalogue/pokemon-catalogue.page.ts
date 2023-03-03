@@ -25,9 +25,6 @@ export class PokemonCataloguePage implements OnInit {
   ) {}
 
   ngOnInit(): void {
-    //this.pokemonCatalogueService.findAllPokemon();
     this.pokemonCatalogueService.getPokemons();
-    // This variable is private, meaning the template can't see it.
-    // Therefore, we need to forward these values somehow.
   }
 }
