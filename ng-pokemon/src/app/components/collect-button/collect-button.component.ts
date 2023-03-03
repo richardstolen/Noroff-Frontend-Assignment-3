@@ -8,8 +8,10 @@ import { UserService } from 'src/app/services/user.service';
   styleUrls: ['./collect-button.component.css'],
 })
 export class CollectButtonComponent {
-  @Input() pokemonName: string = '';
-  @Input() pokemonUrl: string = '';
+  @Input() pokemonName: string = ''; // TODO: id or name?
+  @Input() pokemonUrl: string = ''; // TODO: id or name?
+  @Input() trainerPage?: boolean; // TODO: id or name?
+  @Input() index: number = -1; // TODO: id or name?
 
   private _user?: User;
 
@@ -36,5 +38,13 @@ export class CollectButtonComponent {
         });
       alert('You caught ' + this.pokemonName + '!');
     }
+  }
+  onRemoveClick(): void {
+    // Remove the Pokemon from the Trainer's collection.
+    this.userService.removePokemon(this.index).subscribe((response) => {
+      this.userService.user = response as User;
+    });
+    alert('You removed ' + this.pokemonName);
+    window.location.reload();
   }
 }

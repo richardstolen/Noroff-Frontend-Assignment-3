@@ -1,4 +1,5 @@
 <aside class="absolute top-4 right-4">
+  <ng-container *ngIf="trainerPage === false">
     <button
         (click)="onCollectClick()"
         class="border border-slate-300 bg-poke-blue rounded-xl shadow-xl
@@ -13,4 +14,13 @@
         </ng-container>
 
     </button>
+  </ng-container>
+  <ng-container *ngIf="trainerPage === true">
+    <button
+      (click)="onRemoveClick()"
+      class="border border-slate-300 rounded-xl flex justify-center items-center p-2"
+    >
+      <span>Remove</span>
+    </button>
+  </ng-container>
 </aside>
