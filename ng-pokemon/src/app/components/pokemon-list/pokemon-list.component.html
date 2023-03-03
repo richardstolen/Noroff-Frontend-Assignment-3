@@ -1,7 +1,6 @@
 <ul>
-    <li *ngFor="let onePokemon of pokemon">
-        <span>{{ onePokemon.name }} id {{ onePokemon.url }}</span>
-        <img src={{spriteUrl(onePokemon.url)}} alt="Picture of Pokemon" width="200" height="200"> <!-- TODO check params ->
-    </li>
+    <app-pokemon-list-item
+    *ngFor="let onePokemon of pokemon"
+    [pokemon]="onePokemon"
+    ></app-pokemon-list-item>
 </ul>
-<!-- TODO: pokemon BY some property? See end of video 8. -->
