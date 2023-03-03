@@ -1,7 +1,7 @@
 import { HttpClient, HttpHeaders } from '@angular/common/http';
 import { Injectable } from '@angular/core';
 import { map, Observable, of, switchMap } from 'rxjs';
-import { environment } from 'src/environments/environment.prod'; // TODO: why??????????????????????
+import { environment } from 'src/environments/environment.prod';
 import { User } from '../models/user.model';
 
 // Import from environment file. De-structures the 'apiUsers' value from it.

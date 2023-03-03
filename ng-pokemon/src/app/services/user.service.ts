@@ -27,6 +27,7 @@ export class UserService {
     this._user = StorageUtil.storageRead<User>(StorageKeys.User);
   }
 
+  // Add a pokemon to the user's collection.
   addPokemon(pokemonName: string, pokemonUrl: string) {
     const pokemon = {} as Pokemon;
     pokemon.name = pokemonName;
@@ -49,6 +50,7 @@ export class UserService {
     );
   }
 
+  // Removes the pokemon from the collection.
   removePokemon(index: number) {
     this._user?.pokemon?.splice(index, 1);
 

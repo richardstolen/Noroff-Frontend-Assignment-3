@@ -1,4 +1,4 @@
-import { Component, Input, OnInit } from '@angular/core';
+import { Component, Input } from '@angular/core';
 import { Router } from '@angular/router';
 import { Pokemon } from 'src/app/models/pokemon.model';
 import { environment } from 'src/environments/environment.prod';
@@ -8,7 +8,7 @@ import { environment } from 'src/environments/environment.prod';
   templateUrl: './pokemon-list-item.component.html',
   styleUrls: ['./pokemon-list-item.component.css'],
 })
-export class PokemonListItemComponent implements OnInit {
+export class PokemonListItemComponent {
   @Input() pokemon?: Pokemon;
   @Input() index: number = -1;
 
@@ -29,6 +29,4 @@ export class PokemonListItemComponent implements OnInit {
 
     return `${environment.apiPokemonSprites}/${id}.png`;
   }
-
-  ngOnInit(): void {}
 }

@@ -11,7 +11,7 @@ export class StorageUtil {
             // If the item exists...
             if (storedValue) {
                 return JSON.parse(storedValue) as T;
-            }
+            } // Else...
                 return undefined;
     
         } catch (error) {

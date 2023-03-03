@@ -1,4 +1,4 @@
-import { Component } from '@angular/core';
+import { Component, OnInit } from '@angular/core';
 import { StorageKeys } from './enums/storage-keys.enum';
 import { PokemonCatalogueService } from './services/pokemon-catalogue.service';
 import { StorageUtil } from './utils/storage.util';
@@ -8,7 +8,7 @@ import { StorageUtil } from './utils/storage.util';
   templateUrl: './app.component.html',
   styleUrls: ['./app.component.css'],
 })
-export class AppComponent {
+export class AppComponent implements OnInit {
   title = 'ng-pokemon';
 
   constructor(

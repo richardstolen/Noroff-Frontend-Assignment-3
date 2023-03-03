@@ -27,14 +27,15 @@ export class LoginFormComponent {
       .subscribe({
         next: (user: User) => {
           // Store newly selected user
-          this.userService.user = user; // TODO: shouldn't be able to access private "_user" variable without getter
-
+          this.userService.user = user;
+          
           // Let the parent element (the login page in this case) know that the user is being logged in,
           // so that it can take appropriate action, such as redirecting to a different page for instance.
           this.login.emit();
         },
-        error: () => {
-          // TODO: handle locally
+        error: (error: Error) => {
+          console.log("ERROR", error.message
+          );
         }
       })
   }

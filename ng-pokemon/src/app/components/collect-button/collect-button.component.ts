@@ -23,9 +23,9 @@ export class CollectButtonComponent {
     this._user = userService.user;
   }
 
-  onCollectClick(): void {
-    // Add the pokemon to the Trainer's collection.
+    // Adds the pokemon to the Trainer's collection.
     // But first, make sure we only add it if it's NOT already in the collection. We don't want duplicates.
+  onCollectClick(): void {
     if (this.userService.pokemonInCollection(this.pokemonName)) {
       alert("You've already caught this pokemon.");
       throw new Error(

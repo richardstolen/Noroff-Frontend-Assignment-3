@@ -1,7 +1,7 @@
 import { HttpClient, HttpErrorResponse } from '@angular/common/http';
 import { Injectable } from '@angular/core';
 import { finalize } from 'rxjs';
-import { environment } from 'src/environments/environment.prod'; // TODO: .prod???
+import { environment } from 'src/environments/environment.prod';
 import { StorageKeys } from '../enums/storage-keys.enum';
 import { PokemonResponse } from '../models/pokemon-response.model';
 import { Pokemon } from '../models/pokemon.model';
@@ -31,6 +31,7 @@ export class PokemonCatalogueService {
 
   constructor(private readonly http: HttpClient) {}
 
+  // Gets pokemon (plural) from the API.
   public findAllPokemon(): void {
     this._loading = true;
     this.http
@@ -50,6 +51,7 @@ export class PokemonCatalogueService {
       });
   }
 
+  // Gets all gen 1 pokemon.
   public loadPokemons(): void {
     this.http.get<PokemonResponse>(apiPokemon + '?limit=151').subscribe({
       next: (pokemon: PokemonResponse) => {
@@ -61,6 +63,7 @@ export class PokemonCatalogueService {
     });
   }
 
+  // Gets LOCALLY stored pokemon. After they're stored locally, we don't need to call on the API every time.
   public getPokemons(): void {
     const pokemons = StorageUtil.storageRead(StorageKeys.Pokemons) as Pokemon[];
 
