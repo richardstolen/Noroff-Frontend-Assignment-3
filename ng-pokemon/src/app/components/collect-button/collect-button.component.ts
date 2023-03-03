@@ -15,18 +15,29 @@ export class CollectButtonComponent {
 
   private _user?: User;
 
+  get alreadyCaught(): boolean {
+    return this.userService.pokemonInCollection(this.pokemonName);
+  }
+
   constructor(private readonly userService: UserService) {
     this._user = userService.user;
   }
 
   onCollectClick(): void {
-    // Add the Pokemon to the Trainer's collection.
-    this.userService
-      .addPokemon(this.pokemonName, this.pokemonUrl)
-      .subscribe((response) => {
-        this.userService.user = response as User;
-      });
-    alert('You caught ' + this.pokemonName);
+    // Add the pokemon to the Trainer's collection.
+    // But first, make sure we only add it if it's NOT already in the collection. We don't want duplicates.
+    if (this.userService.pokemonInCollection(this.pokemonName)) {
+      alert("You've already caught this pokemon.");
+      throw new Error("Collect Pokemon (addtoCollection): Pokemon alredy collected.");
+    }
+    else { // If the pokemon hadn't been caught yet, catch it (add it to the collection).
+      this.userService
+        .addPokemon(this.pokemonName, this.pokemonUrl)
+        .subscribe((response) => {
+          this.userService.user = response as User;
+        });
+      alert('You caught ' + this.pokemonName + '!');
+    }
   }
   onRemoveClick(): void {
     // Remove the Pokemon from the Trainer's collection.
