@@ -1,27 +1,31 @@
-# NgPokemon
+<div align="center">
+    <h1>Noroff Frontend Assignment 3: Pokémon Trainer</h1>
+     <img src="https://raw.githubusercontent.com/PokeAPI/sprites/master/sprites/pokemon/25.png" width="128" alt="BEAR">
+</div>
 
-This project was generated with [Angular CLI](https://github.com/angular/angular-cli) version 15.2.0.
+[![license](https://img.shields.io/badge/License-MIT-green.svg)](LICENSE)
+[![standard-readme compliant](https://img.shields.io/badge/readme%20style-standard-brightgreen.svg?style=flat-square)](https://github.com/RichardLitt/standard-readme)
 
-## Development server
+## Background information
+The purpose of this project is to build a Pokémon Trainer webpage with Angular!
 
-Run `ng serve` for a dev server. Navigate to `http://localhost:4200/`. The application will automatically reload if you change any of the source files.
+## Visit deployed page
 
-## Code scaffolding
+This project has been deployed with [Netlify](https://www.netlify.com/). Webpage link:
 
-Run `ng generate component component-name` to generate a new component. You can also use `ng generate directive|pipe|service|class|guard|interface|enum|module`.
+    https://enter link here
 
-## Build
+## Maintainers
 
-Run `ng build` to build the project. The build artifacts will be stored in the `dist/` directory.
+[@Andreas Nes](https://gitlab.com/andreas_nes_experis) 
+[@Richard Stølen](https://gitlab.com/richardstolen)
 
-## Running unit tests
+## Contributing
 
-Run `ng test` to execute the unit tests via [Karma](https://karma-runner.github.io).
+PRs accepted.
 
-## Running end-to-end tests
+Small note: If editing the Readme, please conform to the [standard-readme](https://github.com/RichardLitt/standard-readme) specification.
 
-Run `ng e2e` to execute the end-to-end tests via a platform of your choice. To use this command, you need to first add a package that implements end-to-end testing capabilities.
+## License
 
-## Further help
-
-To get more help on the Angular CLI use `ng help` or go check out the [Angular CLI Overview and Command Reference](https://angular.io/cli) page.
+[MIT](../LICENSE) © Richard Stølen & Andreas Nes
