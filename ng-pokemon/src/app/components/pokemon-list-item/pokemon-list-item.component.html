@@ -1,8 +1,11 @@
 <li *ngIf="pokemon" class="mb-4 shadow bg-slate-50 rounded-xl relative">
-  <app-collect-button
-    [pokemonUrl]="pokemon.url"
-    [pokemonName]="pokemon.name"
-  ></app-collect-button>
+  <ng-container *ngIf="currentUrl === '/pokemon'">
+    <app-collect-button
+      [pokemonUrl]="pokemon.url"
+      [pokemonName]="pokemon.name"
+    ></app-collect-button>
+  </ng-container>
+
   <section>
     <img
       src="{{ spriteUrl(pokemon.url) }}"
