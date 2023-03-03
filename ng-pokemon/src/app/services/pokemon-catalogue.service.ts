@@ -30,7 +30,6 @@ export class PokemonCatalogueService {
 
   constructor(private readonly http: HttpClient) { }
 
-  // TODO: make sure PokemonResponse is the correct implementation!!!!
   public findAllPokemon(): void {
     this._loading = true;
     this.http.get<PokemonResponse>(apiPokemon)
@@ -41,7 +40,7 @@ export class PokemonCatalogueService {
       )
       .subscribe({
         next: (pokemon: PokemonResponse) => {
-          this._pokemon = pokemon.results; // TODO IMPORTANT!!!!!!!!!!!!!: get "results"
+          this._pokemon = pokemon.results;
         },
         error: (error: HttpErrorResponse) => {
           this._error = error.message;
