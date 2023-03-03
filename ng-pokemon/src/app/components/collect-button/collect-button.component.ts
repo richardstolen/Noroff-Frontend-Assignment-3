@@ -46,6 +46,7 @@ export class CollectButtonComponent {
     this.userService.removePokemon(this.index).subscribe((response) => {
       this.userService.user = response as User;
     });
-    alert('You removed ' + this.pokemonName);
+    alert('You released ' + this.pokemonName + ' back into the wild, where it can be happy and free.');
+    window.location.reload();
   }
 }
