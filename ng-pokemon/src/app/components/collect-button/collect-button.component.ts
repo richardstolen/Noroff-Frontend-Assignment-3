@@ -1,19 +1,29 @@
 import { Component, Input } from '@angular/core';
+import { User } from 'src/app/models/user.model';
+import { UserService } from 'src/app/services/user.service';
 
 @Component({
   selector: 'app-collect-button',
   templateUrl: './collect-button.component.html',
-  styleUrls: ['./collect-button.component.css']
+  styleUrls: ['./collect-button.component.css'],
 })
 export class CollectButtonComponent {
+  @Input() pokemonName: string = ''; // TODO: id or name?
+  @Input() pokemonUrl: string = ''; // TODO: id or name?
 
-  @Input() pokemonName: string = ""; // TODO: id or name?
+  private _user?: User;
 
-  constructor() { }
+  constructor(private readonly userService: UserService) {
+    this._user = userService.user;
+  }
 
   onCollectClick(): void {
     // Add the Pokemon to the Trainer's collection.
-    alert("You caught " + this.pokemonName + "!\nBut it quickly escaped (implement Pokémon collection feature).")
+    this.userService
+      .addPokemon(this.pokemonName, this.pokemonUrl)
+      .subscribe((response) => {
+        this.userService.user = response as User;
+      });
+    alert('You caught ' + this.pokemonName);
   }
-
 }
