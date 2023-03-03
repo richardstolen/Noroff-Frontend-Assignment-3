@@ -1,3 +1,15 @@
 @tailwind base;
 @tailwind components;
 @tailwind utilities;
+
+.bg-poke-yellow {
+    background-color: #FFCB05;
+}
+
+.bg-poke-blue {
+    background-color: #3D7DCA;
+}
+
+.bg-poke-navy-blue {
+    background-color: #003A70;
+}
