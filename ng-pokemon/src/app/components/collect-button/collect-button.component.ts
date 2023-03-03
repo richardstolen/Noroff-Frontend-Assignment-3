@@ -9,17 +9,21 @@ import { UserService } from 'src/app/services/user.service';
 })
 export class CollectButtonComponent {
   @Input() pokemonName: string = ''; // TODO: id or name?
+  @Input() pokemonUrl: string = ''; // TODO: id or name?
 
   private _user?: User;
+
   constructor(private readonly userService: UserService) {
     this._user = userService.user;
   }
 
   onCollectClick(): void {
     // Add the Pokemon to the Trainer's collection.
-    this.userService.addPokemon(this.pokemonName).subscribe((response) => {
-      this.userService.user = response as User;
-    });
+    this.userService
+      .addPokemon(this.pokemonName, this.pokemonUrl)
+      .subscribe((response) => {
+        this.userService.user = response as User;
+      });
     alert('You caught ' + this.pokemonName);
   }
 }

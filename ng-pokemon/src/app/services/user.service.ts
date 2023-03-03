@@ -4,6 +4,7 @@ import { StorageKeys } from '../enums/storage-keys.enum';
 import { User } from '../models/user.model';
 import { environment } from 'src/environments/environment.prod';
 import { StorageUtil } from '../utils/storage.util';
+import { Pokemon } from '../models/pokemon.model';
 
 const { apiUsers, apiKey } = environment;
 
@@ -26,8 +27,11 @@ export class UserService {
     this._user = StorageUtil.storageRead<User>(StorageKeys.User);
   }
 
-  addPokemon(pokemonName: string) {
-    this._user?.pokemon?.push(pokemonName);
+  addPokemon(pokemonName: string, pokemonUrl: string) {
+    const pokemon = {} as Pokemon;
+    pokemon.name = pokemonName;
+    pokemon.url = pokemonUrl;
+    this._user?.pokemon?.push(pokemon);
 
     const header = {
       'X-API-KEY': apiKey,
