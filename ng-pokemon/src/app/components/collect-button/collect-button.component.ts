@@ -33,7 +33,7 @@ export class CollectButtonComponent {
     this.userService.removePokemon(this.index).subscribe((response) => {
       this.userService.user = response as User;
     });
-    console.log(this.index);
     alert('You removed ' + this.pokemonName);
+    window.location.reload();
   }
 }

@@ -1,5 +1,7 @@
 import { Component } from '@angular/core';
 import { Router } from '@angular/router';
+import { StorageKeys } from 'src/app/enums/storage-keys.enum';
+import { StorageUtil } from 'src/app/utils/storage.util';
 
 @Component({
   selector: 'app-login',
@@ -11,5 +13,12 @@ export class LoginPage {
 
   handleLogin(): void {
     this.router.navigateByUrl('/pokemon');
+  }
+
+  ngOnInit(): void {
+    // Redirecting if user is already logged in
+    if (StorageUtil.storageRead(StorageKeys.User)) {
+      this.router.navigateByUrl('/pokemon');
+    }
   }
 }
