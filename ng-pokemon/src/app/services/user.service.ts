@@ -41,10 +41,21 @@ export class UserService {
     const body = {
       pokemon: this._user?.pokemon,
     };
+
     return this.http.patch(
       apiUsers + '/' + this._user?.id,
       JSON.stringify(body),
       { headers: header }
     );
   }
+
+  // Tells us whether the Pokemon is already in the user's collection.
+  public pokemonInCollection(pokemonName: string):  boolean {
+    if (this._user) {
+      // Returns whether the Pokemon with the name given is in the collection.
+      return Boolean(this.user?.pokemon.find((onePokemon: Pokemon) => onePokemon.name === pokemonName));
+    }
+    return false; // Returns false if no user is logged in.
+  }
+
 }
