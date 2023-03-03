@@ -1,5 +1,7 @@
 import { Component } from '@angular/core';
+import { StorageKeys } from './enums/storage-keys.enum';
 import { PokemonCatalogueService } from './services/pokemon-catalogue.service';
+import { StorageUtil } from './utils/storage.util';
 
 @Component({
   selector: 'app-root',
@@ -14,6 +16,9 @@ export class AppComponent {
   ) {}
 
   ngOnInit(): void {
-    this.pokemonCatalogueService.loadPokemons();
+    // Loading pokemons from API if they are not already loaded
+    if (!StorageUtil.storageRead(StorageKeys.Pokemons)) {
+      this.pokemonCatalogueService.loadPokemons();
+    }
   }
 }

@@ -47,6 +47,5 @@ export class CollectButtonComponent {
       this.userService.user = response as User;
     });
     alert('You removed ' + this.pokemonName);
-    window.location.reload();
   }
 }
