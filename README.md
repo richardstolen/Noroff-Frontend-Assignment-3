@@ -26,7 +26,10 @@ PRs accepted.
 
 
 ## Component Tree / Page flow
- <img src="https://gitlab.com/andreas_nes_experis/assignment-6-pokemon/-/blob/main/Frontend-3-component-tree-page-flow.png"  alt="component">
+ <img src="https://gitlab.com/andreas_nes_experis/assignment-6-pokemon/-/blob/main/Frontend-3-component-tree-page-flow.png" width="500 alt="component">
+
+ ![alt text](Frontend-3-component-tree-page-flow.png "comptree")
+
 
 
 Small note: If editing the Readme, please conform to the [standard-readme](https://github.com/RichardLitt/standard-readme) specification.
