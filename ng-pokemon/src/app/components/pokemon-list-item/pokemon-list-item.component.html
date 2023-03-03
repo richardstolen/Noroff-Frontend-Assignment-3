@@ -1,8 +1,18 @@
 <li *ngIf="pokemon" class="mb-4 shadow bg-slate-50 rounded-xl relative">
   <ng-container *ngIf="currentUrl === '/pokemon'">
     <app-collect-button
+      [trainerPage]="false"
       [pokemonUrl]="pokemon.url"
       [pokemonName]="pokemon.name"
+    ></app-collect-button>
+  </ng-container>
+
+  <ng-container *ngIf="currentUrl === '/trainer'">
+    <app-collect-button
+      [trainerPage]="true"
+      [pokemonUrl]="pokemon.url"
+      [pokemonName]="pokemon.name"
+      [index]="index"
     ></app-collect-button>
   </ng-container>
 

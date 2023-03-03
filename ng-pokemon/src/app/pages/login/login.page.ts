@@ -4,13 +4,12 @@ import { Router } from '@angular/router';
 @Component({
   selector: 'app-login',
   templateUrl: './login.page.html',
-  styleUrls: ['./login.page.css']
+  styleUrls: ['./login.page.css'],
 })
 export class LoginPage {
-
-  constructor(private readonly router: Router) { }
+  constructor(private readonly router: Router) {}
 
   handleLogin(): void {
-    this.router.navigateByUrl("/pokemon");
+    this.router.navigateByUrl('/pokemon');
   }
 }

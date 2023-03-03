@@ -47,4 +47,22 @@ export class UserService {
       { headers: header }
     );
   }
+
+  removePokemon(index: number) {
+    this._user?.pokemon?.splice(index, 1);
+
+    const header = {
+      'X-API-KEY': apiKey,
+      'Content-Type': 'application/json',
+    };
+
+    const body = {
+      pokemon: this._user?.pokemon,
+    };
+    return this.http.patch(
+      apiUsers + '/' + this._user?.id,
+      JSON.stringify(body),
+      { headers: header }
+    );
+  }
 }
