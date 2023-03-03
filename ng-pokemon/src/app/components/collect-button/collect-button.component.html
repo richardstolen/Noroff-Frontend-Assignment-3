@@ -3,11 +3,11 @@
         <button (click)="onCollectClick()" class="bg-poke-blue rounded-xl shadow-xl
         flex justify-center items-center p-2">
             <ng-container *ngIf="!alreadyCaught">
-                <span class="text-white font-bold">Collect</span>
+                <span class="text-white font-bold">Catch</span>
                 <img src="../../../assets/open-pokeball.png" alt="open pokeball" class="block w-16 p-4">
             </ng-container>
             <ng-container *ngIf="alreadyCaught">
-                <span class="text-blue-300 font-bold">(In collection)</span>
+                <span class="text-blue-300 font-bold">(Caught)</span>
                 <img src="../../../assets/closed-pokeball.png" alt="closed pokeball" class="block w-16 p-4">
             </ng-container>
         </button>
@@ -17,7 +17,7 @@
         <button (click)="onRemoveClick()"
             class="bg-poke-blue rounded-xl shadow-xl
             flex justify-center items-center p-2">
-            <span class="text-white font-bold">Remove</span>
+            <span class="text-white font-bold">Release</span>
         </button>
     </ng-container>
 </aside>
