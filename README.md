@@ -11,7 +11,7 @@ The purpose of this project is to build a Pokémon Trainer webpage with Angular!
 
 ## Visit deployed page
 
-This project has been deployed with [Netlify](https://www.netlify.com/). Webpage link:
+This project has been deployed with [Vercel](https://vercel.com/). Webpage link:
 
     https://assignment-6-pokemon-puce.vercel.app/
 
