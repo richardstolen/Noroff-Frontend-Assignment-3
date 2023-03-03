@@ -1,19 +1,20 @@
 import { HttpClient, HttpErrorResponse } from '@angular/common/http';
 import { Injectable } from '@angular/core';
-import { finalize, map } from 'rxjs';
+import { finalize } from 'rxjs';
 import { environment } from 'src/environments/environment.prod'; // TODO: .prod???
+import { StorageKeys } from '../enums/storage-keys.enum';
 import { PokemonResponse } from '../models/pokemon-response.model';
 import { Pokemon } from '../models/pokemon.model';
+import { StorageUtil } from '../utils/storage.util';
 
 const { apiPokemon } = environment;
 
 @Injectable({
-  providedIn: 'root'
+  providedIn: 'root',
 })
 export class PokemonCatalogueService {
-
   private _pokemon: Pokemon[] = [];
-  private _error: string = "";
+  private _error: string = '';
   private _loading: boolean = false;
 
   get pokemon(): Pokemon[] {
@@ -28,12 +29,13 @@ export class PokemonCatalogueService {
     return this._loading;
   }
 
-  constructor(private readonly http: HttpClient) { }
+  constructor(private readonly http: HttpClient) {}
 
   // TODO: make sure PokemonResponse is the correct implementation!!!!
   public findAllPokemon(): void {
     this._loading = true;
-    this.http.get<PokemonResponse>(apiPokemon)
+    this.http
+      .get<PokemonResponse>(apiPokemon)
       .pipe(
         finalize(() => {
           this._loading = false;
@@ -45,8 +47,26 @@ export class PokemonCatalogueService {
         },
         error: (error: HttpErrorResponse) => {
           this._error = error.message;
-        }
-      })
+        },
+      });
   }
 
+  public loadPokemons(): void {
+    this.http.get<PokemonResponse>(apiPokemon + '?limit=151').subscribe({
+      next: (pokemon: PokemonResponse) => {
+        StorageUtil.storageSave(StorageKeys.Pokemons, pokemon.results);
+      },
+      error: (error: HttpErrorResponse) => {
+        this._error = error.message;
+      },
+    });
+  }
+
+  public getPokemons(): void {
+    const pokemons = StorageUtil.storageRead(StorageKeys.Pokemons) as Pokemon[];
+
+    if (pokemons) {
+      this._pokemon = pokemons;
+    }
+  }
 }

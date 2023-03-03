@@ -28,9 +28,11 @@ export class CollectButtonComponent {
     // But first, make sure we only add it if it's NOT already in the collection. We don't want duplicates.
     if (this.userService.pokemonInCollection(this.pokemonName)) {
       alert("You've already caught this pokemon.");
-      throw new Error("Collect Pokemon (addtoCollection): Pokemon alredy collected.");
-    }
-    else { // If the pokemon hadn't been caught yet, catch it (add it to the collection).
+      throw new Error(
+        'Collect Pokemon (addtoCollection): Pokemon alredy collected.'
+      );
+    } else {
+      // If the pokemon hadn't been caught yet, catch it (add it to the collection).
       this.userService
         .addPokemon(this.pokemonName, this.pokemonUrl)
         .subscribe((response) => {

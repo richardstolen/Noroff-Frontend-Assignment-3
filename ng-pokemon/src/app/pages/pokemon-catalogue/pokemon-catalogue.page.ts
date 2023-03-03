@@ -5,10 +5,9 @@ import { PokemonCatalogueService } from 'src/app/services/pokemon-catalogue.serv
 @Component({
   selector: 'app-pokemon-catalogue',
   templateUrl: './pokemon-catalogue.page.html',
-  styleUrls: ['./pokemon-catalogue.page.css']
+  styleUrls: ['./pokemon-catalogue.page.css'],
 })
 export class PokemonCataloguePage implements OnInit {
-
   get pokemon(): Pokemon[] {
     return this.pokemonCatalogueService.pokemon; // No parenthesis, getters are created as properties, not methods.
   }
@@ -23,12 +22,12 @@ export class PokemonCataloguePage implements OnInit {
 
   constructor(
     private readonly pokemonCatalogueService: PokemonCatalogueService
-  ) { }
+  ) {}
 
   ngOnInit(): void {
-    this.pokemonCatalogueService.findAllPokemon();
+    //this.pokemonCatalogueService.findAllPokemon();
+    this.pokemonCatalogueService.getPokemons();
     // This variable is private, meaning the template can't see it.
     // Therefore, we need to forward these values somehow.
   }
-
 }
